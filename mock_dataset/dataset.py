@@ -1,14 +1,13 @@
 """ Набор данных для одномерной регрессии"""
 
 import math
-import random
 
 import numpy as np
 
 
-def __analytic_func__(x):
-    """ Функция, определяющая зависимость набора данных Y от X @returns dependent value"""
-    return math.log(x) + 3 * math.sin(x)
+def __analytic_func__(arg):
+    """Функция, определяющая зависимость набора данных Y от X @returns dependent value"""
+    return math.log(arg) + 3 * math.sin(arg)
 
 
 X = np.arange(0.001, 600, 0.001)

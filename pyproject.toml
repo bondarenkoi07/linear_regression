@@ -9,6 +9,7 @@ packages = [{include = "linear_regression"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 numpy = "^1.24.2"
+matplotlib = "^3.7.1"
 
 
 [build-system]

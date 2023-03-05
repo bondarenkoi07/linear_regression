@@ -12,7 +12,7 @@ res = []
 for p in range(1, 15):
     res.append(linear_regression(dataset.X, dataset.Y, p))
 
-min_mse = min(res, key=lambda x: (x[0], x[1]))
+min_mse = min(res, key=lambda x: x[1])
 
 index = res.index(min_mse)
 

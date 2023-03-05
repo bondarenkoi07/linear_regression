@@ -1,7 +1,7 @@
-import numpy as np
+# pylint: disable=invalid-name
+"""package providing linear regression build"""
 import math
-
-from numpy import linalg
+import numpy as np
 
 
 def linear_regression(
@@ -15,16 +15,16 @@ def linear_regression(
         ]
     )
 
-    weights = linalg.inv(np.dot(A.transpose(), A)).dot(
+    weights = np.linalg.inv(np.dot(A.transpose(), A)).dot(
         A.transpose().dot(dependent)
     )  # веса на основе эталонных значений
 
-    restored_Y = A.dot(weights)  # восстановление зависимой переменной
+    restored = A.dot(weights)  # восстановление зависимой переменной
 
-    rrv = dependent - restored_Y  # вектор регрессионных остатков
+    rrv = dependent - restored  # вектор регрессионных остатков
 
     sse = rrv.dot(rrv.transpose())  # сумма квадратов регрессионных остатков
 
     mse = sse / len(dependent)  # усредненнная ошибка
 
-    return sse, mse, restored_Y
+    return sse, mse, restored

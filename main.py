@@ -6,7 +6,7 @@ from mock_dataset import dataset
 
 res = []
 
-for p in range(1, 14):
+for p in range(1, 15):
     res.append(linear_regression(dataset.X, dataset.Y, p))
 
 min_mse = min(res, key=lambda x: (x[0], x[1]))

@@ -12,3 +12,6 @@ def __analytic_func__(arg):
 
 X = np.arange(0.001, 600, 0.001)
 Y = np.array([__analytic_func__(x) for x in X])
+
+X_CONTROL = np.arange(600.001, 1200, 0.001)
+Y_CONTROL = np.array([__analytic_func__(x) for x in X_CONTROL])

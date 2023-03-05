@@ -1,28 +1,20 @@
-"""creating linear regression"""
-
-
+"""find best polynom power for linear regression"""
 import matplotlib.pyplot as plt
-import numpy as np
-from numpy import linalg
 
+from linear_regression.regression import linear_regression
 from mock_dataset import dataset
 
-A = np.array([[1, x] for x in dataset.X])
+res = []
 
-weights = linalg.inv(np.dot(A.transpose(), A)).dot(
-    A.transpose().dot(dataset.Y)
-)  # веса на основе эталонных значений
+for p in range(1, 14):
+    res.append(linear_regression(dataset.X, dataset.Y, p))
 
-restored_Y = A.dot(weights)  # восстановление зависимой переменной
+min_mse = min(res, key=lambda x: (x[0], x[1]))
 
-rrv = dataset.Y - restored_Y  # вектор регрессионных остатков
-
-sse = rrv.dot(rrv.transpose())  # сумма квадратов регрессионных остатков
-
-mse = sse / len(dataset.Y)  # усредненнная ошибка
+index = res.index(min_mse)
 
 plt.plot(dataset.X, dataset.Y, label="original func value", color="g")
-plt.plot(dataset.X, restored_Y, label="linear regression", color="b")
+plt.plot(dataset.X, res[index][2], label="linear regression", color="b")
 plt.ylabel("dependent variable")
 plt.xlabel("independent variable")
 
@@ -30,4 +22,4 @@ plt.legend()
 
 plt.show()
 
-print(f"mse={mse} sse={sse}")
+print(f"mse={res[index][1]} sse={res[index][0]} polynom power={index}")
